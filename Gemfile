@@ -76,3 +76,4 @@ gem 'spree_email_to_friend', github: 'spree-contrib/spree_email_to_friend', bran
 gem 'spree_recently_viewed', github: 'spree-contrib/spree_recently_viewed'
 gem 'spree_i18n', github: 'spree-contrib/spree_i18n'
 gem 'spree_globalize', github: 'spree-contrib/spree_globalize'
+gem 'spree_avatax_certified', github: 'spree-contrib/spree_avatax_certified', branch: 'master'

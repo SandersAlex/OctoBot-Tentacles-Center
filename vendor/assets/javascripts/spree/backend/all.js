@@ -13,3 +13,4 @@
 //= require spree/backend/spree_multi_currency
 //= require spree/backend/spree_globalize
 //= require spree/backend/spree_product_assembly
+//= require spree/backend/spree_avatax_certified

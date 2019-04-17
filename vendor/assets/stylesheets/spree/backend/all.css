@@ -9,4 +9,5 @@
  *= require_tree .
  *= require spree/backend/spree_digital
  *= require spree/backend/spree_globalize
+ *= require spree/backend/spree_avatax_certified
 */

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_02_235531) do
+ActiveRecord::Schema.define(version: 2019_03_02_235538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -126,6 +126,25 @@ ActiveRecord::Schema.define(version: 2019_03_02_235531) do
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "spree_avalara_entity_use_codes", id: :serial, force: :cascade do |t|
+    t.string "use_code"
+    t.string "use_code_description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "spree_avalara_transactions", id: :serial, force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "reimbursement_id"
+    t.string "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer "refund_id"
+    t.index ["order_id"], name: "index_spree_avalara_transactions_on_order_id"
+    t.index ["refund_id"], name: "index_spree_avalara_transactions_on_refund_id"
+    t.index ["reimbursement_id"], name: "index_spree_avalara_transactions_on_reimbursement_id"
   end
 
   create_table "spree_calculators", id: :serial, force: :cascade do |t|
@@ -930,6 +949,7 @@ ActiveRecord::Schema.define(version: 2019_03_02_235531) do
     t.integer "tax_category_id"
     t.string "code"
     t.integer "vendor_id"
+    t.string "tax_code"
     t.index ["deleted_at"], name: "index_spree_shipping_methods_on_deleted_at"
     t.index ["tax_category_id"], name: "index_spree_shipping_methods_on_tax_category_id"
     t.index ["vendor_id"], name: "index_spree_shipping_methods_on_vendor_id"
@@ -1275,6 +1295,9 @@ ActiveRecord::Schema.define(version: 2019_03_02_235531) do
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.string "exemption_number"
+    t.integer "avalara_entity_use_code_id"
+    t.string "vat_id"
     t.index ["bill_address_id"], name: "index_spree_users_on_bill_address_id"
     t.index ["deleted_at"], name: "index_spree_users_on_deleted_at"
     t.index ["email"], name: "email_idx_unique", unique: true
